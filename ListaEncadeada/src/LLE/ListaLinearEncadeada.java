@@ -141,10 +141,135 @@ public class ListaLinearEncadeada {
 		
 	}
 	// Remover nodo do inicio de uma lista linear encadeada
+	public void removeInicio() 
+	{
+		Nodo aux = this.inicio;
+		if(aux != null || aux.getProx() != null)
+		{
+			this.inicio = aux.getProx();
+		}else
+		{
+			this.inicio = null;
+		}
+	}
 	
 	// Inserir um nodo no meio da lista linear encadeada
-	
+	public void inserirNoMeio(int valor)
+	{
+		Nodo novoNodo = new Nodo();
+		novoNodo.setValor(valor);
+		novoNodo.setProx(null);
+		
+		Nodo aux = this.inicio;
+		if(aux == null)
+		{
+			this.inicio = novoNodo;
+		}else
+		{
+			if(aux.getProx() == null) 
+			{
+				aux.setProx(novoNodo); // 1 valor na lista, adiciona no final
+			}else
+			{
+				// Pegar tamanho da lista
+				int tamLista = 0;
+				while(aux != null)
+				{
+					tamLista +=1;
+					aux = aux.getProx();
+				}
+				// verificar se o tamanho é par ou impar
+				double divLista = tamLista % 2;
+				
+				// Problema com o double sendo arredondado no float,
+				// entao como sugestao de solucao vamos arredondar para cima sempre
+				double divListaInteiro = tamLista / 2;
+				boolean par = (divLista == 0 ? true : false );
+				
+				// Adicionando na posicao
+				if(par) 
+				{
+					double posAdicionar = divListaInteiro;
+					aux = this.inicio;
+					while(posAdicionar != 1)
+					{
+						aux = aux.getProx();
+						posAdicionar-=1;
+					}
+					// adicionando no meio
+					Nodo auxProx = aux.getProx();
+					novoNodo.setProx(auxProx);
+					aux.setProx(novoNodo);		
+				}else
+				{
+					double posAdicionar = Math.round(divListaInteiro);
+					aux = this.inicio;
+					while(posAdicionar != 1)
+					{
+						aux = aux.getProx();
+						posAdicionar-=1;
+					}
+					// adicionando no meio
+					Nodo auxProx = aux.getProx();
+					novoNodo.setProx(auxProx);
+					aux.setProx(novoNodo);
+				}
+			}
+		}
+	}
 	// Remover um nodo do meio da lista linear encadeada
+	public void removerDoMeio()
+	{
+		Nodo aux = this.inicio;
+		if(aux != null)
+		{
+			if(aux.getProx() == null) 
+			{
+				this.inicio = null;
+			}else
+			{
+				// Pegar tamanho da lista
+				int tamLista = 0;
+				while(aux != null)
+				{
+					tamLista +=1;
+					aux = aux.getProx();
+				}
+				// verificar se o tamanho é par ou impar
+				double divLista = tamLista % 2;
+				
+				// Problema com o double sendo arredondado no float,
+				// entao como sugestao de solucao vamos arredondar para cima sempre
+				double divListaInteiro = tamLista / 2;
+				boolean par = (divLista == 0 ? true : false );
+				
+				// Removendo da posicao
+				if(par) 
+				{
+					double posRemover = divListaInteiro;
+					aux = this.inicio;
+					while(posRemover != 1)
+					{
+						aux = aux.getProx();
+						posRemover-=1;
+					}
+					// Removendo da posicao
+					aux.setProx(aux.getProx().getProx());		
+				}else
+				{
+					double posAdicionar = Math.round(divListaInteiro);
+					aux = this.inicio;
+					while(posAdicionar != 1)
+					{
+						aux = aux.getProx();
+						posAdicionar-=1;
+					}
+					// Removendo da posicao
+					aux.setProx(aux.getProx().getProx());
+				}
+			}
+		}
+	}
 	
 	public Nodo getNodo()
 	{

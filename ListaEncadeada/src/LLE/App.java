@@ -10,6 +10,7 @@ public class App {
 		lista.inserir(4);
 		lista.inserir(5);
 		lista.inserir(6);
+
 		
 		//lista.imprimir(lista.getNodo());
 		//System.out.println("-----");
@@ -30,8 +31,24 @@ public class App {
 		// Remover do final
 		System.out.println("-----");
 		lista.removeDoFinal();
-		lista.removeDoFinal();
-		lista.removeDoFinal();
+		//lista.removeDoFinal();
+		//lista.removeDoFinal();
+		lista.imprimir();
+		
+		/* Remove inicio
+		System.out.println("-----");
+		lista.removeInicio();
+		lista.removeInicio();
+		lista.removeInicio();
+		lista.removeInicio();
+		lista.removeInicio();
+		lista.removeInicio();
+		lista.imprimir();*/
+		System.out.println("-----");
+		lista.inserirNoMeio(10000);
+		lista.imprimir();
+		System.out.println("-----");
+		lista.removerDoMeio();
 		lista.imprimir();
 	}
 }
