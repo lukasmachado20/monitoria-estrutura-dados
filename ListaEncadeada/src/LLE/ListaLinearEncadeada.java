@@ -68,7 +68,7 @@ public class ListaLinearEncadeada {
 	 * 
 	 * Este metodo retorna -1 caso o valor passado como parametro nao for encontrado.
 	 * @param	valor	O valor buscado na lista
-	 * @return 			A posicao do nodo
+	 * @return 			A posicao do nodo   
 	 */
 	public int pesquisarNodo(int valor)
 	{
